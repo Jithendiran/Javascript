@@ -1,0 +1,12 @@
+Improve Performance
+
+    * Using the 'with' Keyword is time taking process so reduce using the with Keyword.The with keyword is not allowed in strict mode. 
+    * Avoid Unnecessary Variables
+    * Minimize DOM access
+    * Keep codes light and small
+    * Avoid unwanted loops
+    * Eliminate memory leaks
+
+Reference
+    https://www.peerbits.com/blog/tips-to-improve-javascript-performance.html
+    https://www.w3schools.com/js/js_performance.asp

@@ -1,0 +1,35 @@
+JavaScript provides six primitive types as 
+    undefined, 
+    null, 
+    boolean, 
+    number, 
+    string, 
+    symbol.
+
+    The size of a primitive value is fixed, therefore, JavaScript stores the primitive value on the stack.
+    If the value is a primitive value, when you access the variable, you manipulate the actual value stored in that variable. 
+    In other words, the variable that stores a primitive value is accessed by value.
+
+    To determine the type of a primitive value you use the typeof operator.
+
+    When you assign a variable that stores a primitive value to another, the value stored in the variable is created and copied into the new variable.
+
+
+
+
+
+Reference type object
+    The size of a reference value is dynamic so JavaScript stores the reference value on the heap.
+    Unlike a primitive value, when you manipulate an object, you work on the reference of that object, rather than the actual object. 
+    It means a variable that stores an object is accessed by reference.
+
+    To find the type of a reference value, you use the instanceof operator
+
+    When you assign a reference value from one variable to another, the value stored in the variable is also copied into the location of the new variable.
+
+    The difference is that the values stored in both variables now are the address of the actual object stored on the heap. 
+    As a result, both variables are referencing the same object.
+
+
+
+

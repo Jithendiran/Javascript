@@ -1,0 +1,451 @@
+MILESTONE 2
+
+
+
+Case-sensitivity 
+	js is a case sensitivity language
+	var apple != var Apple 
+Indentifiers
+	only alphabets,numbers,_ is allowed and must start with _ or alphabet
+Comments
+	for user understand while compiling compiler or interpreter ingnore it
+	
+	for js : // single line,/* st */ multiple line
+
+Strict Mode
+	JavaScript's strict mode, introduced in ECMAScript 5.
+	non-strict mode referred to as "sloppy mode"
+	Browsers not supporting strict mode will run strict mode code with different behavior from browsers.
+
+	it forces the programmer to a good programming way
+
+	Strict mode makes several changes to normal JavaScript semantics:
+
+		->Eliminates some JavaScript silent errors by changing them to throw errors.
+		->Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code 
+		  can sometimes be made to run faster than identical code that's not strict mode.
+		->Prohibits some syntax likely to be defined in future versions of ECMAScript.
+
+Statements
+	let x, y, z;    // Statement 1
+		x = 5;          // Statement 2
+		y = 6;          // Statement 3
+		z = x + y;      // Statement 4
+
+		A computer program is a list of "instructions" to be "executed" by a computer.In a programming language, these programming instructions are called statements.
+
+Keywords and reserved words
+	Keywords have a special meaning in a language, and are part of the syntax.
+	Reserved words are words that cannot be used as identifiers (variables, functions, etc.), because they are reserved by the language.
+
+	->In Java, goto is a reserved word but not a keyword (as a consequence, you cannot use it at all)
+	->Fortran has no reserved words, all keywords (if, then, etc.) can be used as identifiers
+
+	In JavaScript you cannot use these reserved words as variables, labels, or function names:
+				abstract	arguments	await*	boolean
+				break	byte	case	catch
+				char	class*	const	continue
+				debugger	default	delete	do
+				double	else	enum*	eval
+				export*	extends*	false	final
+				finally	float	for	function
+				goto	if	implements	import*
+				in	instanceof	int	interface
+				let*	long	native	new
+				null	package	private	protected
+				public	return	short	static
+				super*	switch	synchronized	this
+				throw	throws	transient	true
+				try	typeof	var	void
+				volatile	while	with	yield
+
+Words marked with* are new in ECMAScript 5 and 6.
+
+Variable
+	Variables are the names you give to computer memory locations which are used to store values in a computer program.
+
+	Variable name is beging with var,let,const .Default is var
+
+	Using let you can reassign variables, but its syntax is more strict than var.
+
+	function myFn()
+	{
+	var foo = 'peekaboo!';
+	
+	console.log(foo); // 'peekaboo!'
+	}
+
+	console.log(foo); // ReferenceError: foo is not defined
+
+	if (true)
+	{
+		var foo = 'peekaboo!';
+		let bar = 'i see u';
+		const baz = 'baby blue!';
+
+		console.log(foo); // 'peekaboo!';
+		console.log(bar); // 'i see u';
+		console.log(baz); // 'baby blue!';
+		}
+
+		console.log(foo); // 'peekaboo!';
+		console.log(bar); // ReferenceError: bar is not defined
+		console.log(baz); // ReferenceError: baz is not defined
+
+	let is more use full then var 
+	var a = 5;
+	var a = "avbd" // no errors
+
+	let a = 5;
+	let a = "fhgjhkl" //error SyntaxError: Identifier 'a' has already been declared
+
+	const is read only
+
+typeof 
+	In JavaScript, the typeof operator returns the data type of its operand in the form of a string.
+	Note: Operand is an expression representing the object or primitive whose type is to be returned.
+
+	The possible types that exists in javascript are:
+
+	undefined
+	Object
+	boolean
+	number
+	string
+	symbol
+	function
+
+	symbol() are a datatype it always be unique not like constant
+	var a = 5
+	var b = 5
+	a === b //true
+	var b = Symbol(5)
+	var a = Symbol(5)
+	a === b
+	false
+
+undefined
+	Note: While you can use undefined as an identifier (variable name)
+	 in any scope other than the global scope (because undefined is not a reserved word),
+	 doing so is a very bad idea
+
+	 function test(t) {
+		if (t === undefined) {
+			return 'Undefined value!';
+		}
+		return t;
+		}
+
+		let x;
+
+		console.log(test(x));
+		// expected output: "Undefined value!"
+
+		The undefined property indicates that a variable has not been assigned a value,
+		 or not declared at all.
+
+		 function myFunction() {
+			if (typeof y === "undefined") {
+			    txt = "y is undefined";
+			} else {
+			    txt = "y is defined";
+			}
+			console.log(txt);//y is undefined
+			}
+			 myFunction()
+
+null
+	The value null represents the intentional absence of any object value. 
+	It is one of JavaScript's primitive values and is treated as falsy for boolean operations.
+
+	var foo = null;
+	foo; //null
+	typeof null          // "object" (not "null" for legacy reasons)
+	typeof undefined     // "undefined"
+	null === undefined   // false
+	null  == undefined   // true
+	null === null        // true
+	null == null         // true
+	!null                // true
+	isNaN(1 + null)      // false
+	isNaN(1 + undefined) // true
+
+
+	var a = undefined
+	console.log(a,typeof a) //undefined undefined
+	a = a + 1
+	console.log(a,typeof a) //NaN number
+
+Boolean
+	For this, JavaScript has a Boolean data type. 
+	It can only take the values true or false.
+
+	Boolean(10 > 9)        // returns true
+	(10 > 9)              // also returns true
+	10 > 9                // also returns true
+
+	let x = 0;
+	Boolean(x);       // returns false
+
+	let x = -0;
+	Boolean(x);       // returns false
+
+	let x = "";
+	Boolean(x);       // returns false
+
+	let x = null;
+	Boolean(x);     // returns false
+
+	let x = 10 / "Hallo";
+	Boolean(x);       // returns false
+
+	let x = false;
+	let y = new Boolean(false);
+
+	// typeof x returns boolean
+	// typeof y returns object
+
+	let x = false;             
+	let y = new Boolean(false);
+
+	// (x == y) is true because x and y have equal values
+
+	let x = false;             
+	let y = new Boolean(false);
+
+	// (x === y) is false because x and y have different types
+
+	let x = new Boolean(false);             
+	let y = new Boolean(false);
+
+	// (x == y) is false because objects cannot be compared
+
+
+numbers
+	JavaScript has only one type of number. Numbers can be written with or without decimals.
+
+	let x = 3.14;    // A number with decimals
+	let y = 3;       // A number without decimals
+
+	let x = 123e5;    // 12300000
+	let y = 123e-5;   // 0.00123
+
+	JavaScript Numbers are Always 64-bit Floating Point
+
+
+	This format stores numbers in 64 bits, where the number (the fraction) is stored in bits 0 to 51, the exponent in bits 52 to 62, and the sign in bit 63:
+
+	Value (aka Fraction/Mantissa)		Exponent			Sign
+	52 bits (0 - 51) 					11 bits (52 - 62)	1 bit (63)
+
+	eg:
+	2.3x10^5 = 230000.
+	2.3 = Mantissa
+	10^5 = Exponent
+
+	0 = +ve sign
+	1 = -ve sign
+
+	Precision
+	Integers (numbers without a period or exponent notation) are accurate up to 15 digits.
+	let x = 999999999999999;   // x will be 999999999999999
+	let y = 9999999999999999;  // y will be 10000000000000000	
+
+	The maximum number of decimals is 17, but floating point arithmetic is not always 100% accurate:
+
+	let x = 0.2 + 0.1;         // x will be 0.30000000000000004
+
+	let x = 10;
+	let y = 20;
+	let z = x + y;           // z will be 30 (a number)
+
+	let x = "10";
+	let y = "20";
+	let z = x + y;           // z will be 1020 (a string)
+
+	let x = 10;
+	let y = "20";
+	let z = x + y;           // z will be 1020 (a string)
+
+	let x = 10;
+	let y = 20;
+	let z = "30";
+	let result = x + y + z;
+
+	The JavaScript interpreter works from left to right.
+
+	First 10 + 20 is added because x and y are both numbers.
+
+	Then 30 + "30" is concatenated because z is a string.
+
+	JavaScript will try to convert strings to numbers in all numeric operations:
+
+	let x = "100";
+	let y = "10";
+	let z = x / y;       // z will be 10 (-,/,%,*)also work + is concat
+
+	NaN - Not a Number
+	NaN is a JavaScript reserved word indicating that a number is not a legal number.
+
+	Trying to do arithmetic with a non-numeric string will result in NaN (Not a Number):
+
+	Example
+	let x = 100 / "Apple";  // x will be NaN (Not a Number)
+
+	let x = 100 / "Apple";
+	isNaN(x);               // returns true because x is Not a Number
+
+	If you use NaN in a mathematical operation, the result will also be NaN:
+
+	Example
+	let x = NaN;
+	let y = 5;
+	let z = x + y;         // z will be NaN
+
+	the result might be a concatenation:
+	let x = NaN;
+	let y = "5";
+	let z = x + y;         // z will be NaN5
+
+	NaN is a number: typeof NaN returns number:
+
+	Infinity
+	Infinity (or -Infinity) is the value JavaScript will return if you calculate a number outside the largest possible number.
+
+	Example
+	let myNumber = 2;
+	while (myNumber != Infinity) {   // Execute until Infinity
+	myNumber = myNumber * myNumber;
+	}
+
+	let x =  2 / 0;       // x will be Infinity
+	let y = -2 / 0;       // y will be -Infinity
+
+	typeof Infinity;     // returns "number"
+
+	Hexadecimal
+	let x = 0xFF;        // x will be 255
+
+	By default, JavaScript displays numbers as base 10 decimals.
+
+	But you can use the toString() method to output numbers from base 2 to base 36.
+
+	Hexadecimal is base 16. Decimal is base 10. Octal is base 8. Binary is base 2.
+
+	let myNumber = 32;
+	myNumber.toString(10);  // returns 32
+	myNumber.toString(32);  // returns 10
+	myNumber.toString(16);  // returns 20
+	myNumber.toString(8);   // returns 40
+	myNumber.toString(2);   // returns 100000
+
+	console.log(Number.MIN_VALUE);//5e-324
+	console.log(Number.MAX_VALUE);//1.7976931348623157e+308
+
+strings
+	let txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	txt.length     // Returns 26
+
+	slice(start, end)
+	substring(start, end)
+	substr(start, length)
+
+	let str = "Apple, Banana, Kiwi";
+	str.slice(7, 13)     // Returns Banana
+	let str = "Apple, Banana, Kiwi";
+	str.slice(-12, -6)    // Returns Banana
+	str.slice(7);    // Returns Banana,Kiwi
+	str.slice(-12)    // Returns Banana,Kiwi
+
+	substring() is similar to slice().
+
+	The difference is that substring() cannot accept negative indexes.
+
+	let str = "Apple, Banana, Kiwi";
+	substring(7, 13)    // Returns Banana
+
+	substr() is similar to slice().
+
+	The difference is that the second parameter specifies the length of the extracted part.
+
+	let str = "Apple, Banana, Kiwi";
+	str.substr(7, 6)    // Returns Banana
+	let str = "Apple, Banana, Kiwi";
+	str.substr(7)    // Returns Banana,Kiwi
+	let str = "Apple, Banana, Kiwi";
+	If the first parameter is negative, the position counts from the end of the string.
+	str.substr(-4)    // Returns Kiwi
+
+	replace()
+	let text = "Please visit Microsoft!";
+	let newText = text.replace("Microsoft", "W3Schools");
+	The replace() method does not change the string it is called on. It returns a new string.
+	By default, the replace() method is case sensitive.
+	To replace case insensitive, use a regular expression with an /i flag (insensitive):
+
+	let text = "Please visit Microsoft!";
+	let newText = text.replace(/MICROSOFT/i, "W3Schools");
+
+	To replace all matches, use a regular expression with a /g flag (global match):
+
+	Example
+	let text = "Please visit Microsoft and Microsoft!";
+	let newText = text.replace(/Microsoft/g, "W3Schools");
+
+	let text1 = "Hello World!";       // String
+	let text2 = text1.toUpperCase();  // text2 is text1 converted to upper
+	let text2 = text1.toLowerCase();  // text2 is text1 converted to lower
+
+
+
+	concat() joins two or more strings:
+	let text3 = text1.concat(text2," ","+",.....);
+
+	let text = "HELLO WORLD";
+	text.charAt(0)           // Returns H
+
+	The charCodeAt() method returns the unicode of the character at a specified index in a string:
+
+	The method returns a UTF-16 code (an integer between 0 and 65535).
+	let text = "HELLO WORLD";
+
+	text.charCodeAt(0)       // Returns 72
+
+	let text = "HELLO WORLD";
+	text[0] = "A"             // Gives no error, but does not work
+	text[0]                   // returns H
+
+	A string can be converted to an array with the split() method:
+
+
+Object Type
+
+	//1
+	var myCar = new Object();
+	myCar.make = 'Ford';
+	myCar.model = 'Mustang';
+	myCar.year = 1969;
+	//2
+	var myCar = {
+	    make: 'Ford',
+	    model: 'Mustang',
+	    year: 1969
+	};
+
+	//3
+	Using a constructor function
+	function Car(make, model, year) {
+	this.make = make;
+	this.model = model;
+	this.year = year;
+	}
+
+	var car1 = new Car('Eagle', 'Talon TSi', 1993, rand);
+	var car2 = new Car('Nissan', '300ZX', 1992, ken);
+	
+	var a = 5
+	console.log(a , typeof a)//5 number
+
+	var n = new Number(5)
+	console.log(n , typeof n)//[Number: 5] object
+

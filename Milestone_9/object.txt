@@ -1,0 +1,104 @@
+Objects, in JavaScript, is it’s most important data-type and forms the building blocks for modern JavaScript. 
+These objects are quite different from JavaScript’s primitive data-types(Number, String, Boolean, null, undefined and symbol) in the sense that while these primitive data-types all store a single value each (depending on their types).
+
+Objects are more complex and each object may contain any combination of these primitive data-types as well as reference data-types.
+An object, is a reference data type. Variables that are assigned a reference value are given a reference or a pointer to that value. 
+That reference or pointer points to the location in memory where the object is stored. The variables don’t actually store the value.
+Loosely speaking, objects in JavaScript may be defined as an unordered collection of related data, of primitive or reference types, in the form of “key: value” pairs. 
+These keys can be variables or functions and are called properties and methods, respectively, in the context of an object.
+
+eg:
+    // javascript code demonstrating a simple object
+    let school = {
+        name: 'Vivekananda School',
+        location : 'Delhi',
+        established : '1971',
+        displayInfo : function(){
+            console.log(`${school.name} was established 
+                in ${school.established} at ${school.location}`);
+        }
+    }
+    school.displayInfo();   
+
+
+                                                                        Inherited Properties
+
+Inherited properties of an object are those properties which have been inherited from the object’s prototype, as opposed to being defined for the object itself, which is known as the object’s Own property. To verify if a property is an objects Own property, we can use the hasOwnProperty method.
+
+Property Attributes
+Data properties in JavaScript have four attributes.
+
+value: The property’s value.
+writable: When true, the property’s value can be changed
+enumerable: When true, the property can be iterated over by “for-in” enumeration. Otherwise, the property is said to be non-enumerable.
+configurable:If false, attempts to delete the property, change the property to be an access-or property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.
+
+
+// hasOwnProperty code in js
+const object1 = new Object();
+object1.property1 = 42;
+  
+console.log(object1.hasOwnProperty('property1')); // true
+
+
+Using the Object literal syntax : 
+
+        var obj = {
+        member1 : value1,
+        member2 : value2,
+        };
+
+Object Constructor : 
+
+    const school = new Object();
+    school.name = 'Vivekanada school';
+    school.location = 'Delhi';
+    school.established = 1971;
+
+    school.displayInfo = function(){
+        console.log(`${school.name} was established
+            in ${school.established} at ${school.location}`);
+    }
+
+    school.displayInfo();
+
+
+The two methods mentioned above are not well suited to programs that require the creation of multiple objects of the same kind, as it would involve repeatedly writing the above lines of code for each such object. To deal with this problem, we can make use of two other methods of object creation in JavaScript that reduces this burden significantly, as mentioned below:
+
+Constructors: Constructors in JavaScript, like in most other OOP languages, provides a template for creation of objects. In other words, it defines a set of properties and methods that would be common to all objects initialized using the constructor.
+
+        function Vehicle(name, maker) {
+        this.name = name;
+        this.maker = maker;
+        }
+
+        let car1 = new Vehicle('Fiesta', 'Ford');
+        let car2 = new Vehicle('Santa Fe', 'Hyundai')
+
+        console.log(car1.name); // Output: Fiesta
+        console.log(car2.name); // Output: Santa Fe
+
+
+        class people {
+        constructor()
+        {
+            this.name = "Adam";
+        }
+        }
+
+        let person1 = new people();
+
+        // Output : Adam	
+        console.log(person1.name);	
+
+Prototypes : Another way to create objects involves using prototypes. Every JavaScript function has a prototype object property by default(it is empty by default).Methods or properties may be attached to this property. A detailed description of prototypes is beyond the scope of this introduction to objects.
+However you may familiarize yourself with the basic syntax used as below:
+
+    let footballers = {
+        position: "Striker"
+    }
+
+    let footballer1 = Object.create(footballers);
+
+        // Output : Striker	
+    console.log(footballer1.position);

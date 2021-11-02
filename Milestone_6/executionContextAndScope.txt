@@ -1,0 +1,101 @@
+Execution context in JavaScript is of three types as:
+   1.Global execution context (GEC):
+         This is the default execution context in which JS code start its execution when the file first loads in the browser. 
+         All of the global code i.e. code which is not inside any function or object is executed inside the global execution context. 
+         GEC cannot be more than one because only one global environment is possible for JS code execution as the JS engine is single threaded.
+
+    2.Functional execution context (FEC): 
+        Functional execution context is defined as the context created by the JS engine whenever it finds any function call. 
+        Each function has its own execution context. It can be more than one. Functional execution context has access to all the code of the global execution context though vice versa is not applicable.
+        While executing the global execution context code, if JS engine finds a function call, it creates a new functional execution context for that function. In the browser context, 
+        if the code is executing in strict mode value of this is undefined else it is window object in the function execution context.
+    
+    3.Eval: 
+        Execution context inside eval function.
+
+JavaScript engine creates the execution context in the following two stages:
+* Creation phase
+* Execution phase
+
+    Creation phase is the phase in which the JS engine has called a function but its execution has not started. In the creation phase, 
+    JS engine is in the compilation phase and it just scans over the function code to compile the code, it doesn’t execute any code.
+
+In the creation phase, JS engine performs the following task:
+
+    Creates the Activation object or the Variable object:
+        Activation object is a special object in JS which contain all the variables, function arguments and inner functions declaration information.
+        As activation object is a special object it does not have the dunder proto property.
+
+    Creates the scope chain: 
+        Once the activation object gets created, the JS engine initializes the scope chain which is a list of all the variables objects inside which the current function exists.
+        This also includes the variable object of the global execution context. Scope chain also contains the current function variable object.
+
+    Determines the value of this: 
+        After the scope chain, the JavaScript engine initializes the value of this.
+
+Execution phase:
+    In the execution phase, JS engines will again scan through the function to update the variable object with the values of the variables and will execute the code.
+
+
+Scope Chain
+
+    The scope chain is a list of all the variable objects of functions inside which the current function exists.
+    Scope chain also consists of the current function execution object.
+
+Scope Chain Agumentation
+
+    There are two primary types of execution contexts, global and function.
+
+    There are other ways to augment the scope chain.
+
+    Certain statements add a temporary scope to the front of the scope chain that is later removed after code execution.
+
+    There are two statements that can create new scope:
+        * The catch block in a try-catch statement
+        * A with statement
+
+    Both of these statements add a variable object to the front of the scope chain.
+
+    For the catch statement, a new variable object is created and contains a declaration for the thrown error object.
+
+    For the with statement, the specified object is added to the scope chain.
+
+    Consider the following:
+
+    function buildUrl() {
+    var qs = "new value";
+
+    with(location){
+        var url = href + qs;
+    }
+
+    return url;
+    }
+    In this example, the with statement is acting on the location object, so location itself is added to the front of the scope chain.
+
+    There is one variable, qs, defined in the buildUrl() function.
+
+    When the variable href is referenced, it's actually referring to location.href.
+
+    When the variable qs is referenced, it's referring to the variable defined in buildUrl(), which is in the function context's variable object.
+
+    Inside the with statement is a variable declaration for url, which becomes part of the function's context and can be returned as the function value.
+
+
+
+
+
+
+ Points to Remember :
+    * JavaScript has global scope and local scope.
+    * Variables declared and initialized outside any function become global variables.
+    * Variables declared and initialized inside function becomes local variables to that function.
+    * Variables declared without var keyword inside any function becomes global variables automatically.
+    * Global variables can be accessed and modified anywhere in the program.
+    * Local variables cannot be accessed outside the function declaration.
+    * Global variable and local variable can have same name without affecting each other.
+    * JavaScript does not allow block level scope inside { } brackets.
+
+
+Reference : https://medium.com/@happymishra66/execution-context-in-javascript-319dd72e8e2c,
+         https://2ality.com/2011/06/with-statement.html
