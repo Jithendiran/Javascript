@@ -1,0 +1,12 @@
+cors - cross origin resouce sharing
+Before cors there was no resource share between different origin of web apps
+
+now a days the big application are build into micro service and deployed into different servers.
+so need of cors is very important(same application is splitted into smaller one and deployed seperately)
+
+after standardize the cors the resource sharing is allowed
+
+if 'a' want to communicate with 'b' means 
+    1st a send and prefright call to b 
+    b verify it then send options response the acknowledgement (options response has additional http headers )
+    after receving the acknowledgement now a can share the resource

@@ -1,0 +1,32 @@
+Js is single threaed 
+
+for asynchronous it need browser support
+callstack is inside js engine,js engine is inside window(browser tab).The has support of location,history,local storage,
+Dom,..etc.These are access by global object.
+js engine is immediately execute all the code inside callstack
+for eg:
+    if a setTimout is set for 5 sec
+
+   * 1st js engine run any code in callstack if a setTimout is seen the bowser start timing.
+
+   * if the timer is over then it push to callback queue.
+
+   * event loop is a special one who continously checking the callback queue.
+
+   * if any data in the callback queue and callstack is empty then it put inside the callstack ,then js engine execute it
+
+
+like callback queue there is an another queue called microtask queue, 
+it has higher priority then callback queue , promise and async/Await is goes to the microtask queue
+Note : async/Await is a kind of promise.
+
+event loop 1st check inside microtask queue if any data inside it event loop put 1st one on the callstack,
+after execute the 1st task the callstack is empty then it put second,like wise it put one by one.
+
+if callstack is empty and microtask queue is also empty then it  check in callback queue it put the function inside the queue one by one
+
+Note :
+promise's and mutation observer is goes inside microtask queue.
+then other callbacks, Dom api,...ect are goes to callback queue
+
+callback queue is also known as task queue

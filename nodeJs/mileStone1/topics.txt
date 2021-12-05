@@ -1,0 +1,13 @@
+Both advantage and disadvantage
+
+1) Callback
+2) Avoid callback hell
+3) Promise
+4) Bluebird Promises
+5) Async Await
+
+Convert Callback to promise
+Convert promise to async await
+
+
+callback,promise,Async Await covered in Javascript ./Jithendiran/Milestone_5/jsAsync.js

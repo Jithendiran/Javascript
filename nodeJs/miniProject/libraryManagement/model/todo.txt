@@ -1,0 +1,37 @@
+if user is add by normal 
+    author id and type 'normal' is added to users table
+
+if user is add by github
+    github id is given by github
+    github id and type 'github' is added to users table
+
+
+if a user login
+
+    login by author
+        -   singn in by user id in author table and password
+        -   then get users id in users table by type = 'normal' and typeid = that author id
+
+    login by github
+            check user is alredy there in git table if not add user
+        -   singn in by user by git
+        -   then get users id in users table by type = 'git' and typeid = id given by git
+
+
+add a book
+    add a book by userid in session
+
+view the book by particlar user
+    get the userid from session then get type 
+        and get the book in book table by that user id
+
+edit book
+    userid and book id edit the book
+
+edit user detail
+    only for author login table
+    get the id in session and compare with author table and edit
+
+userid in book table is foreign key of users table
+
+    

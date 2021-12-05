@@ -1,0 +1,60 @@
+In the Node.js module system, each file is treated as a separate module.
+Variables local to the module will be private, because the module is wrapped in a function by Node.js
+The module.exports property can be assigned a new value (such as a function or object).
+
+module object is not a global object
+
+for more clearity print
+console.log(module)
+
+output
+Module {
+  id: '.',
+  path: '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/Jithendiran/nodeJs/mileStone2/exportAndConsumingModules',
+  exports: [Function (anonymous)],
+  parent: null,
+  filename: '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/Jithendiran/nodeJs/mileStone2/exportAndConsumingModules/addExport.js',
+  loaded: false,
+  children: [],
+  paths: [
+    '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/Jithendiran/nodeJs/mileStone2/exportAndConsumingModules/node_modules',
+    '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/Jithendiran/nodeJs/mileStone2/node_modules',
+    '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/Jithendiran/nodeJs/node_modules',
+    '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/Jithendiran/node_modules',
+    '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/node_modules',
+    '/home/jidesh/Work/Calibraint/node_modules',
+    '/home/jidesh/Work/node_modules',
+    '/home/jidesh/node_modules',
+    '/home/node_modules',
+    '/node_modules'
+  ]
+}
+
+path indicates the particular file path
+exports shows what files exported
+filename is filename that is exported
+paths indicate where the node modules are found
+
+
+at run time the content of a node file is wrapped inside a immediate invoke function
+(function (exports,require,module,__filename,__dirname){
+    your code
+})()
+
+it is automatically done
+
+this is called module wrapper function
+
+1 : exports is reference to module.exports 
+    eg exports.name = statement //ok
+       exports = statement // not prefered
+2 : require is used to Importing   
+    eg require('file')
+3 : module is module.exports
+    eg module.exports = statement
+       module.exports.a = statement
+4 : __filename it is the complete path of current file
+    eg '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/Jithendiran/nodeJs/mileStone2/exportAndConsumingModules/addExport.js',
+
+5 : __dirname it is parent directory of current file
+    eg '/home/jidesh/Work/Calibraint/Tech-Abecedarians-2k21/Jithendiran/nodeJs/mileStone2/exportAndConsumingModules/',

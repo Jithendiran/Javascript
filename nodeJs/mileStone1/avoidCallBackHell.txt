@@ -1,0 +1,22 @@
+/**
+ * Documenter : Jithendiran
+ * Date       : 02-11-2021
+ * Avoid CallBack Hell
+ */
+
+
+ JavaScript provides an easy way of escaping from a callback hell. This is done by event queue and promises.
+ A promise is a returned object from any asynchronous function, to which callback methods can be added based on the previous function’s result.
+ Promises use .then() method to call async callbacks. We can chain as many callbacks as we want and the order is also strictly maintained.
+ Promises use .fetch() method to fetch an object from the network. It also uses .catch() method to catch any exception when any block fails.
+ So these promises are put in event queue so that they don’t block subsequent JS code. Also once the results are returned, the event queue finishes its operations.
+
+
+* First solution to callback hell: Write comments
+* Second solution to callback hell: Split the callbacks into different functions
+* Third solution to callback hell: Use promises
+* Converting callbacks to promises
+* Fourth solution to callback hell: Use asynchronous functions(sync/await)
+
+//Reference
+https://www.freecodecamp.org/news/how-to-deal-with-nested-callbacks-and-avoid-callback-hell-1bc8dc4a2012/

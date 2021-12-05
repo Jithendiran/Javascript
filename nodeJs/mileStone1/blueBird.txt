@@ -1,0 +1,11 @@
+Bluebird JS is a fully-featured Promise library for JavaScript. 
+The strongest feature of Bluebird is that it allows you to “promisify” other Node modules in order to use them asynchronously. 
+Promisify is a concept applied to callback functions.
+This concept is used to ensure that every callback function which is called returns some value.
+
+So if a NodeJS module contains a callback function which does not return a value, and if we Promisify the node module,
+all the function’s in that specific node module would automatically be modified to ensure that it returns a value.
+
+
+//Reference
+//https://www.guru99.com/bluebird-promises.html

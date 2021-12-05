@@ -22,6 +22,7 @@ const lap = function ({ name, ram }) {
 }
 
 const createFactory = function () {
+    // we can't use arrow function because we use new keyword
     this.create = function (arg, type) {
 
         return (type == "lap" ? new lap(arg) : new tab(arg))
