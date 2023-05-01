@@ -1,0 +1,53 @@
+Event Loop
+
+rf: https://www.youtube.com/watch?v=L18RHG2DwwA&list=PLC3y8-rFHvwh8shCMHFA5kWxD9PaPwxaY&index=42
+
+Event Loop is only for asynchronous code.
+Javascript 1st priority will be synchronous code. if the call stack is empty then it will procede to event Loop
+
+Event Loop in NOdejs is Done by libuv c library
+It done the job by 2 process
+    * Thread pool
+    * Native Os support
+
+There are 6 types of queue in Event Loop
+
+ i)   microtask queue 
+        (1.1) process.nextTick queue (nodejs) 
+        (1.2) promise queue
+ii)   timer queue (nodejs, browser)
+iii)  IO queue (nodejs, browser)
+iv)  check queue [setImmediate queue]  (nodejs)
+v)  close queue (nodejs, browser)
+
+There are 6 phases in event loop
+
+* Timers.
+* I/O Callbacks.
+* Waiting / Preparation.
+* I/O Polling.
+* setImmediate() callbacks.
+* Close events.
+
+one complete phases is called tick.
+
+When JS call stack is empty. Event loop will comes into picture
+When the callbacks are completed it will be placed in their respective queues. 
+if the task is in pending state that task will be handled in next tick/ cycle
+untill all pending task are completed js engine will wait
+if there is no pending task in event loop code will exited.
+
+Phase order/priority
+When the control is transfored to event loop. 
+  * 1st it will procede with process.nextTick queue and promise queue
+  * Then it will check timer queue
+  * Then again it will procede with process.nextTick queue and promise queue
+  * Then IO queue
+  * Then again it will procede with process.nextTick queue and promise queue
+  * Then  check queue
+  * Then again it will procede with process.nextTick queue and promise queue
+  * Then Close queue
+
+if there is no pending process js will exit else next event loop cycle will again execute untill all process completed
+
+after every call back completed in timer, I/O, ckeck and close queue, Control will check micro task queue 
