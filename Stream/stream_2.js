@@ -62,7 +62,7 @@ const pipe = async () => {
     readStream.pipe(writeStream);
 
     // chaining is also possible
-    //readStream.pipe(writeStream).pipe(gZip).pipe(..);
+    //readStream.pipe(writeStream).pipe(toLower).pipe(Hash).pipe(...);
 
     readStream.on('end', () => {
         readStream.unpipe(writeStream)
@@ -88,6 +88,7 @@ const pipelineFunc = async () => {
     }
     // transform chaining 
     //pipeline(readStream, t1, t2,..., writeStream);
+    // t1, t2 are tansform where it has both read and write
     console.timeEnd("pipeline");
 
     // check stream.finished function too

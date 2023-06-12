@@ -112,3 +112,15 @@ const fs = require('node:fs/promises');
     });
 
 })();
+
+/**
+ * 4 Types of stream in Node
+ *  Readable
+ *         - This will only read the content default buffer size 64KiB
+ *  Writeable
+ *         - It will only able to write content default buffer size 16KiB
+ *  Duplex 
+ *         - It has two seprate buffer for reading and writting each buffer for seprate file
+ *  Transform
+ *         - It is extended version of Duplex It has two buffer for read and write. It will read content from source and write to it's writting buffer 
+ */
