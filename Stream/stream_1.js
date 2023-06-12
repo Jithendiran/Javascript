@@ -112,10 +112,3 @@ const fs = require('node:fs/promises');
     });
 
 })();
-
-// const buff = Buffer.alloc(16384);
-// buff.write(` 1 `);
-// console.log(buff.toJSON());
-
-// buff.write(` 2 `);
-// console.log(buff.toJSON());
