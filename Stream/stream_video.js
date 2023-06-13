@@ -3,14 +3,21 @@
  * @date 09.06.2023
  */
 
-const { stat } = require('fs/promises');
+const { stat, readFile } = require('fs/promises');
 const { createServer } = require('http');
 const { createReadStream, createWriteStream } = require('fs');
 
 const PORT = 3000;
+const Folder = '/home/jifocus/Documents/video'
 
 const sendVideo = async (req, res) => {
-    const file = '/mnt/Backup/The_Dark_Knight_Trilogy.mp4';
+    const path = req.url.split("/");
+    if (path.length === 2) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        return res.end(await readFile('video.html'));
+    }
+    const name = (path.length > 2 ? `/${path[2].split('?')[0]}.mp4` : `/1.mp4`)
+    const file = Folder + name;
     const { size } = await stat(file);
 
     const range = req.headers.range;
@@ -40,28 +47,32 @@ const sendVideo = async (req, res) => {
 }
 
 const upload = async (req, res) => {
-
+    req.pipe(createWriteStream('./file.mp4'))
+    // await upload(req, res);
+    res.writeHead(200);
+    res.end('Uploaded');
 }
 
 createServer(async (req, res) => {
-    if (req.url == '/video') {
-        sendVideo(req, res);
-    } else if (req.url === '/upload') {
-        if (req.method.toLowerCase() === 'get') {
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(`
+    if (req.url == '/') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        return res.end(await readFile('video.html'));
+    } else
+        if (req.url.startsWith('/video')) {
+            sendVideo(req, res);
+        } else if (req.url === '/upload') {
+            if (req.method.toLowerCase() === 'get') {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(`
             <form enctype="multipart/form-data" action="/upload" method="post">
                 <input type="file" name="upload" >
                 <button>Upload</button>
             </form>
             `);
-        } else if (req.method.toLowerCase() === 'post') {
-            // req.pipe(process.stdout);
-            req.pipe(createWriteStream('./file.mp4'))
-            // await upload(req, res);
-            res.writeHead(200);
-            res.end('Uploaded');
+            } else if (req.method.toLowerCase() === 'post') {
+                // req.pipe(process.stdout);
+                await upload(req, res);
+            }
         }
-    }
 })
     .listen(PORT, () => console.log(`Server Running on http://localhost:${PORT}`));
