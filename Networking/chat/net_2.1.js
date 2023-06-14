@@ -6,9 +6,9 @@
 // This will make connection with server (net_1.js)
 
 const net = require('net');
-const readline = require('readline/promises');
-const { host, port } = require('./constants');
 const { exit } = require('process');
+const readline = require('readline/promises');
+const { host, port } = require('../constants');
 
 const rl = readline.createInterface({
     input: process.stdin,

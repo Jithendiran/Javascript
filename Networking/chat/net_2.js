@@ -5,7 +5,7 @@
 
 // In this type of connection client connection is alive until user client close
 const net = require('net');
-const { host, port } = require('./constants');
+const { host, port } = require('../constants');
 
 const clientSockets = [];
 const server = net.createServer((socket) => {
