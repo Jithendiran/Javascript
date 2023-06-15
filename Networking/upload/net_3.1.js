@@ -6,6 +6,7 @@
 // This will make connection with server (net_3.js)
 
 const net = require('net');
+const path = require('path');
 const { open, stat } = require('fs/promises');
 const { port } = require('../constants');
 
@@ -37,10 +38,15 @@ const socket = net.createConnection(
     }, async () => {
         let i = 0;
         console.log("Connected to server");
-        const filePath = '/mnt/Project/Understanding Networking   Understanding Node.js Core Concepts.mkv';
+        if (process.argv.length <= 2) {
+            throw new Error("Specify Upload File...");
+        }
+        const filePath = process.argv[process.argv.length - 1];
+        // console.log(filePath);
         let file = await open(filePath, 'r');
-        let readStream = file.createReadStream();
         const { size } = await stat(filePath);
+        socket.write(JSON.stringify({ fileName: path.basename(filePath), size: size }));
+        let readStream = file.createReadStream();
         const total = Math.ceil(size / readStream.readableHighWaterMark)
         // Method 1
         // readStream.on('data', (data) => {
@@ -52,7 +58,7 @@ const socket = net.createConnection(
         readStream.on('data', async (data) => {
             ++i;
             await moveAndClear();
-            console.log(`Uploaded : ${(i / total) * 100} %`);
+            console.log(`Uploaded : ${Math.floor((i / total) * 100)} %`);
         })
         readStream.on('end', () => {
             console.log("File Uploaded..");

@@ -7,7 +7,7 @@
 
 const net = require('net');
 const { host, port } = require('./constants');
-
+// TCP socket is only start only when the host is running
 const socket = net.createConnection({ host: host, port: port }, () => {
     socket.write("Hi from 1.1");
 

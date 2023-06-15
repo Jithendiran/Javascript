@@ -11,7 +11,7 @@ const { host, port } = require('./constants');
 
 const server = net.createServer((socket) => {
     // socket is an TCP
-    // socke is an duplex stream
+    // socket is an duplex stream
 
     socket.on('data', (data) => {
         console.log(data.toString());
